@@ -1,17 +1,32 @@
-const calculate = function operate(firstNumber, secondNumber, operator) {
+let firstNumber = "";
+let secondNumber = "";
+let currentOperator = null;
+
+const display = document.querySelector(".display");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const equalsButton = document.getElementById('equalsBtn');
+const clearButton = document.getElementById('clearBtn');    
+
+numbers.forEach((numberBtn) => {
+    numberBtn.addEventListener("click", () => {
+        firstNumber += numberBtn.textContent;
+        display.textContent = firstNumber;
+        console.log("Current variable:", firstNumber);
+    })
+}) 
+
+const operate = function (operator, firstNumber, secondNumber) {
     switch(operator) {
-        case "add":
-            console.log(add(firstNumber,secondNumber));
-            break;
-        case "subtract":
-            console.log(subtract(firstNumber,secondNumber));
-            break;
-        case "multiply":
-            console.log(multiply(firstNumber,secondNumber));
-            break;
-        case "divide":
-            console.log(divide(firstNumber,secondNumber));
-            break;
+        case "+":
+            return add(firstNumber,secondNumber);
+        case "-":
+            return subtract(firstNumber,secondNumber);
+        case "x":
+            return multiply(firstNumber,secondNumber);
+        case "➗":
+            if (secondNumber === 0) return null;
+            else return divide(firstNumber,secondNumber);
     }
 }
 
@@ -25,6 +40,6 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    if (b === 0) {"ERROR"}
     return (a / b);
 }
+

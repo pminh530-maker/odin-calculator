@@ -40,6 +40,13 @@ executeBtn.addEventListener("click", () => {
     }
 });
 
+clearBtn.addEventListener("click", () => {
+    firstNumber = "";
+    secondNumber = "";
+    currentOperator = null;
+    display.textContent = "0";
+});
+
 function operate(currentOperator, firstNumber, secondNumber) {
     if(typeof firstNumber !== "number" || typeof secondNumber !== "number") {
         firstNumber = parseInt(firstNumber);

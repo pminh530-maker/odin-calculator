@@ -35,7 +35,9 @@ operators.forEach((operatorBtn) => {
 }) 
 
 executeBtn.addEventListener("click", () => {
+    if(firstNumber !== "" && secondNumber !== "" && currentOperator !== null) {
     display.textContent = operate(currentOperator, firstNumber, secondNumber);
+    }
 });
 
 function operate(currentOperator, firstNumber, secondNumber) {

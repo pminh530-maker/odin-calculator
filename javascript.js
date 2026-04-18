@@ -22,8 +22,15 @@ numbers.forEach((numberBtn) => {
 
 operators.forEach((operatorBtn) => {
     operatorBtn.addEventListener("click", () => {
-       currentOperator = operatorBtn.textContent;
-       display.textContent = currentOperator;
+        if(firstNumber !== "" && secondNumber !== "" && currentOperator !== null) {
+            operate(currentOperator, firstNumber, secondNumber);
+            display.textContent = operate(currentOperator, firstNumber, secondNumber);
+            firstNumber = display.textContent;
+            currentOperator = operatorBtn.textContent;
+            secondNumber = "";
+       } else {
+        currentOperator = operatorBtn.textContent
+       }
     })
 }) 
 

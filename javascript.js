@@ -61,7 +61,7 @@ function operate(currentOperator, firstNumber, secondNumber) {
         case "x":
             return multiply(firstNumber,secondNumber);
         case "➗":
-            if(secondNumber === 0) return null;
+            if(secondNumber === 0) return "Not today Satan! Press AC to reset the calculator.";
             if(firstNumber % secondNumber !== 0) {
                 return divide(firstNumber,secondNumber).toFixed(10)
             }

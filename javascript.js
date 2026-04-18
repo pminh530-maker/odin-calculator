@@ -10,18 +10,12 @@ const clearButton = document.getElementById('clearBtn');
 
 numbers.forEach((numberBtn) => {
         numberBtn.addEventListener("click", () => {
-            // Update firstNumber, THEN update the display. If we try to clear the display in the loop, it's going to repeat itself every time 
-            // and we would only get one numerical character for firstNumber.
-            // firstNumber += numberBtn.textContent;
-
-            // However, this means we can have something like "0001", which we do not want. 
-            // I still want to include having "0" as an option.
-            // We need to set a condition to check if firstNumber is already "0", and prevent more "0"s from being added to it.
-            if(firstNumber !== "0") {
-                firstNumber += numberBtn.textContent;
+            if (currentOperator === null) {
+                firstNumber === "0" ? firstNumber = numberBtn.textContent : firstNumber += numberBtn.textContent;
             } else {
-                firstNumber = numberBtn.textContent;
+                secondNumber === "0" ? secondNumber = numberBtn.textContent : secondNumber += numberBtn.textContent;
             }
+            console.log(`${firstNumber}; ${currentOperator}; ${secondNumber}`);
     });
 });
 

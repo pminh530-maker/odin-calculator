@@ -5,17 +5,18 @@ let currentOperator = null;
 const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
-const equalsButton = document.getElementById('equalsBtn');
-const clearButton = document.getElementById('clearBtn');    
+const executeBtn = document.querySelector('#executeBtn');
+const clearBtn = document.querySelector('#clearBtn');    
 
 numbers.forEach((numberBtn) => {
         numberBtn.addEventListener("click", () => {
             if (currentOperator === null) {
                 firstNumber === "0" ? firstNumber = numberBtn.textContent : firstNumber += numberBtn.textContent;
+                display.textContent = firstNumber;
             } else {
                 secondNumber === "0" ? secondNumber = numberBtn.textContent : secondNumber += numberBtn.textContent;
+                display.textContent  = secondNumber;
             }
-            console.log(`${firstNumber}; ${currentOperator}; ${secondNumber}`);
     });
 });
 
@@ -26,8 +27,17 @@ operators.forEach((operatorBtn) => {
     })
 }) 
 
-const operate = function (operator, firstNumber, secondNumber) {
-    switch(operator) {
+executeBtn.addEventListener("click", () => {
+    display.textContent = operate(currentOperator, firstNumber, secondNumber);
+});
+
+function operate(currentOperator, firstNumber, secondNumber) {
+    if(typeof firstNumber !== "number" || typeof secondNumber !== "number") {
+        firstNumber = parseInt(firstNumber);
+        secondNumber = parseInt(secondNumber);
+    }
+
+    switch(currentOperator) {
         case "+":
             return add(firstNumber,secondNumber);
         case "-":

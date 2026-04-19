@@ -48,24 +48,21 @@ clearBtn.addEventListener("click", () => {
 });
 
 function operate(currentOperator, firstNumber, secondNumber) {
+    let result = "";
     if(typeof firstNumber !== "number" || typeof secondNumber !== "number") {
-        firstNumber = parseInt(firstNumber);
-        secondNumber = parseInt(secondNumber);
+        firstNumber = Number(firstNumber);
+        secondNumber = Number(secondNumber);   
     }
-
     switch(currentOperator) {
         case "+":
-            return add(firstNumber,secondNumber);
+            return result = add(firstNumber,secondNumber).toFixed(10);
         case "-":
-            return subtract(firstNumber,secondNumber);
+            return result = subtract(firstNumber,secondNumber).toFixed(10);
         case "x":
-            return multiply(firstNumber,secondNumber);
+            return result = multiply(firstNumber,secondNumber).toFixed(10);
         case "➗":
             if(secondNumber === 0) return "Not today Satan! Press AC to reset the calculator.";
-            if(firstNumber % secondNumber !== 0) {
-                return divide(firstNumber,secondNumber).toFixed(10)
-            }
-            else return divide(firstNumber,secondNumber);
+            else return result = divide(firstNumber,secondNumber).toFixed(10);
     }
 }
 

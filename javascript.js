@@ -55,14 +55,34 @@ function operate(currentOperator, firstNumber, secondNumber) {
     }
     switch(currentOperator) {
         case "+":
-            return result = add(firstNumber,secondNumber).toFixed(10);
+            result = add(firstNumber,secondNumber);
+            if(result % 1 !== 0) {
+                return result.toFixed(10);
+            } else {
+                return result;
+            }
         case "-":
-            return result = subtract(firstNumber,secondNumber).toFixed(10);
+            result = subtract(firstNumber,secondNumber);
+            if(result % 1 !== 0) {
+                return result.toFixed(10);
+            } else {
+                return result;
+            }
         case "x":
-            return result = multiply(firstNumber,secondNumber).toFixed(10);
+            result = multiply(firstNumber,secondNumber);
+            if(result % 1 !== 0) {
+                return result.toFixed(10);
+            } else {
+                return result;
+            }
         case "➗":
             if(secondNumber === 0) return "Not today Satan! Press AC to reset the calculator.";
-            else return result = divide(firstNumber,secondNumber).toFixed(10);
+            result = divide(firstNumber,secondNumber);
+            if(result % 1 !== 0) {
+                return result.toFixed(10);
+            } else {
+                return result;
+            }
     }
 }
 

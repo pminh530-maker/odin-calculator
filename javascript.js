@@ -51,38 +51,25 @@ function operate(currentOperator, firstNumber, secondNumber) {
     let result = "";
     if(typeof firstNumber !== "number" || typeof secondNumber !== "number") {
         firstNumber = Number(firstNumber);
-        secondNumber = Number(secondNumber);   
+        secondNumber = Number(secondNumber);
+    if(result % 1 !== 0) {
+        Math.round(result * (10 ** 10))/(10**10)
+    }   
     }
     switch(currentOperator) {
         case "+":
             result = add(firstNumber,secondNumber);
-            if(result % 1 !== 0) {
-                return result.toFixed(10);
-            } else {
-                return result;
-            }
+            return result;
         case "-":
             result = subtract(firstNumber,secondNumber);
-            if(result % 1 !== 0) {
-                return result.toFixed(10);
-            } else {
-                return result;
-            }
+            return result;
         case "x":
             result = multiply(firstNumber,secondNumber);
-            if(result % 1 !== 0) {
-                return result.toFixed(10);
-            } else {
-                return result;
-            }
+            return result;
         case "➗":
             if(secondNumber === 0) return "Not today Satan! Press AC to reset the calculator.";
             result = divide(firstNumber,secondNumber);
-            if(result % 1 !== 0) {
-                return result.toFixed(10);
-            } else {
-                return result;
-            }
+            return result;
     }
 }
 

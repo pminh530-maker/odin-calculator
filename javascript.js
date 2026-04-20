@@ -6,6 +6,7 @@ const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const executeBtn = document.querySelector('#executeBtn');
+const decimalBtn = document.querySelector('#decimalBtn')
 const clearBtn = document.querySelector('#clearBtn');    
 
 numbers.forEach((numberBtn) => {
@@ -28,15 +29,30 @@ operators.forEach((operatorBtn) => {
             firstNumber = display.textContent;
             currentOperator = operatorBtn.textContent;
             secondNumber = "";
+            decimalBtn.disabled = false;
        } else {
         currentOperator = operatorBtn.textContent
        }
     })
 }) 
 
+decimalBtn.addEventListener("click", () => {
+    if (display.textContent.indexOf(".") > -1) {
+        decimalBtn.disabled = true;
+    } else currentOperator === null ? firstNumber = display.textContent += decimalBtn.textContent : secondNumber = display.textContent += decimalBtn.textContent;
+})
+
 executeBtn.addEventListener("click", () => {
     if(firstNumber !== "" && secondNumber !== "" && currentOperator !== null) {
     display.textContent = operate(currentOperator, firstNumber, secondNumber);
+    firstNumber = display.textContent;
+    secondNumber = "";
+    } else {
+    firstNumber = "";
+    secondNumber = "";
+    currentOperator = null;
+    display.textContent = "0";
+    decimalBtn.disabled = false;
     }
 });
 
@@ -45,6 +61,7 @@ clearBtn.addEventListener("click", () => {
     secondNumber = "";
     currentOperator = null;
     display.textContent = "0";
+    decimalBtn.disabled = false;
 });
 
 function operate(currentOperator, firstNumber, secondNumber) {

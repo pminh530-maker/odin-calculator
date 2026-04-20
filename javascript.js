@@ -83,7 +83,7 @@ function operate(currentOperator, firstNumber, secondNumber) {
         case "x":
             result = multiply(firstNumber,secondNumber);
             return result;
-        case "➗":
+        case "÷":
             if(secondNumber === 0) return "Not today Satan! Press AC to reset the calculator.";
             result = divide(firstNumber,secondNumber);
             return result;

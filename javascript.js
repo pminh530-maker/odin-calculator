@@ -7,7 +7,8 @@ const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const executeBtn = document.querySelector('#executeBtn');
 const decimalBtn = document.querySelector('#decimalBtn')
-const clearBtn = document.querySelector('#clearBtn');    
+const clearBtn = document.querySelector('#clearBtn');
+const backspaceBtn = document.querySelector('#backspaceBtn');
 
 numbers.forEach((numberBtn) => {
         numberBtn.addEventListener("click", () => {
@@ -63,6 +64,16 @@ clearBtn.addEventListener("click", () => {
     display.textContent = "0";
     decimalBtn.disabled = false;
 });
+
+backspaceBtn.addEventListener("click", () => {
+    if(display.textContent.length <= 1) {
+        display.textContent = "0";
+        currentOperator === null ? firstNumber = display.textContent : secondNumber = display.textContent;
+    } else {
+        display.textContent = display.textContent.slice(0, -1);
+        currentOperator === null ? firstNumber = display.textContent : secondNumber = display.textContent;
+    }   
+})
 
 function operate(currentOperator, firstNumber, secondNumber) {
     let result = "";
